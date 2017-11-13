@@ -3,7 +3,6 @@ layout: post
 title: Aliyun RDS for Mysql
 ---
 
-## RDS for Mysql
 
 ### Rds的一些使用限制
 - 不提供root或sa账户
@@ -32,7 +31,7 @@ title: Aliyun RDS for Mysql
 - 多类数据存储解决方案
 
 ### 数据库性能测试
--[SysBench](https://github.com/akopytov/sysbench)
+- 使用测压[SysBench](https://github.com/akopytov/sysbench)
 - 准备数据
 ```
 sysbench --num-threads=32 --max-time=3600 --max-requests=999999999 --test= oltp.lua --oltp-table-size=10000000 
