@@ -2,11 +2,12 @@
 layout: post
 title: Aliyun RDS for Mysql
 ---
-
+## 小结
 ### 账号模式
 - rds账户分为经典模式和高权限模式，5.7只有高权限模式。
 - 它们之间的区别是能不能直接通过sql创建账户。
 ![经典模式和高权限管理账户的区别](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/26186/cn_zh/1510133360436/%E5%9C%A8%E4%B8%8D%E5%90%8C%E8%B4%A6%E5%8F%B7%E6%A8%A1%E5%BC%8F%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94.png)
+- **注意！！** 升级了高权限就不能回滚经典模式了！
 
 ### Rds的一些使用限制
 - 不提供root或sa账户
@@ -54,4 +55,8 @@ sysbench --num-threads=32 --max-time=3600 --max-requests=999999999 --test= oltp.
 --oltp-tables-count=64 --db-driver=mysql --mysql-table-engine=innodb --mysql-host= XXXX --mysql-port=3306
 --mysql-user= XXXX --mysql-password= XXXX cleanup
 ```
+### DMS在线数据库管理工具
+
+### 重启的坑！
+- 由于数据库重启时，rds会自动更新小版本，如果出现不兼容后果自负！所以重启前必须先购买一个新的实例进行兼容测试。
 
