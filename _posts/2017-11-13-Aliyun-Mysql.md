@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Aliyun RDS for Mysql!
+title: Aliyun RDS for Mysql
 ---
 
-## Rds for Mysql
+## RDS for Mysql
 
 ### Rds的一些使用限制
 - 不提供root或sa账户
@@ -18,7 +18,7 @@ title: Aliyun RDS for Mysql!
 ### 从本地迁移数据到云上
 - 云上的数据库账号需要和本地一致
 - 支持DTC, FTP, mysqldump
-- [mysqldump doc]（https://help.aliyun.com/document_detail/26133.html）
+- [mysqldump doc](https://help.aliyun.com/document_detail/26133.html)
 
 ### 容灾
 - RDS 通过数据传输服务（DTS）实现主实例和异地灾备实例之间的实时同步。
@@ -32,7 +32,7 @@ title: Aliyun RDS for Mysql!
 - 多类数据存储解决方案
 
 ### 数据库性能测试
--【SysBench](https://github.com/akopytov/sysbench)
+-[SysBench](https://github.com/akopytov/sysbench)
 - 准备数据
 ```
 sysbench --num-threads=32 --max-time=3600 --max-requests=999999999 --test= oltp.lua --oltp-table-size=10000000 
