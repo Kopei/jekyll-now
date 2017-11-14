@@ -24,7 +24,7 @@ title: Aliyun RDS for Mysql
 - 支持DTC, FTP, mysqldump
 - 使用DTS迁移可以实现不停应用，平滑迁移。
 - DTS支持结构迁移、全量迁移、增量迁移。迁移过程中有数据变更可以开启增量迁移。[DTS迁移文档](https://help.aliyun.com/document_detail/26132.html)
-  - 迁移过程中不支持DDL
+  - 迁移过程中不支持DDL
   - 结构迁移不支持event迁移
   - 增量迁移本地需要开启binlog，binlog_format为row。如果本地 MySQL 为5.6版本时，它的 binlog_row_image还须设置为full。
 - [mysqldump doc](https://help.aliyun.com/document_detail/26133.html)
