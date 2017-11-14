@@ -22,6 +22,11 @@ title: Aliyun RDS for Mysql
 ### 从本地迁移数据到云上
 - 云上的数据库账号需要和本地一致
 - 支持DTC, FTP, mysqldump
+- 使用DTS迁移可以实现不停应用，平滑迁移。
+- DTS支持结构迁移、全量迁移、增量迁移。迁移过程中有数据变更可以开启增量迁移。[DTS迁移文档](https://help.aliyun.com/document_detail/26132.html)
+  - 迁移过程中不支持DDL
+  - 结构迁移不支持event迁移
+  - 增量迁移本地需要开启binlog，binlog_format为row。如果本地 MySQL 为5.6版本时，它的 binlog_row_image还须设置为full。
 - [mysqldump doc](https://help.aliyun.com/document_detail/26133.html)
 
 ### 容灾
@@ -77,6 +82,19 @@ sysbench --num-threads=32 --max-time=3600 --max-requests=999999999 --test= oltp.
 - 会话诊断和终止
 - 分析慢sql
 
+### mysql5.6的读写分离
+- 读写分离和主实例、读实例的区别，后者单独有连接地址，业务逻辑选择进行连接。读写分离是一个统一的地址，程序自动进行读写分流。
+- 用户只需要购买读实例，可以免费试用读写分离
+
+### 数据备份和恢复
+- 数据备份oss+日志oss总量>实例空间50%时，将收费。
+- **误删数据该如何恢复？** 使用克隆实例按_按备份集_ 或 _按时间点_ 两种方式复制出一个新的实例，进入克隆实例导出sql,再进入主实例导入sql。若数据较多可以使用DTS.
+
+### 虚机自建mysql和RDS性能对比
+- 云数据库是可能比自建数据库慢的。见[对比ECS自建数据库与RDS性能时的注意事项](https://help.aliyun.com/document_detail/55823.html)
+
+### 其它技术运维问题
+- [其他问题](https://help.aliyun.com/knowledge_list_page/41698/1.html)
 
 
 
