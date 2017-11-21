@@ -56,4 +56,12 @@ repeatable read是mysql默认隔离等级，保证同一个事务多次读取同
     - 可能不总是夸平台
 - 使用check tables 执行恢复操作。
 ### 推荐的备份方案
-- 先使用物理备份，启动mysql实例，运行mysqlcheck, 然后在服务器负载低时周期性地mysqldump执行逻辑备份。
+- 先一周使用一次使用物理备份，启动mysql实例，运行mysqlcheck, 然后在服务器负载低时周期性地mysqldump执行逻辑备份，30分钟备份一次bin-log,备份完flush logs。
+### 需要备份什么？
+- 二进制文件, InnoDB事务日志
+- 代码，如存储过程
+- 配置
+- 服务器配置
+- 操作系统配置
+
+- 
