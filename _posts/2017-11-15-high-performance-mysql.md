@@ -66,4 +66,8 @@ repeatable read是mysql默认隔离等级，保证同一个事务多次读取同
 - 配置
 - 服务器配置
 - 操作系统配置
+### 增量备份存在中间增量出错，导致整个备份不可用的风险
+### 备份中如果要保持数据一致性
+- 使用InnoDB，能够保证一个事务内数据一致备份到另处。但是如果应用逻辑写的不对，导致本应该是一个事务到了两个事务，备份在两个事务之中可能数据不一致。
+- mysqldump --single-transaction 在InnoBD开始dump开启事务，隔离等级必须是repeatable read. 但是dump时不能执行ALTER TABLE, CREATE TABLE, DROP TABLE, RENAME TABLE, TRUNCATE TABLE。**To dump large tables, combine the --single-transaction option with the --quick option.**
 
