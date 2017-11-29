@@ -70,6 +70,11 @@ repeatable read是mysql默认隔离等级，保证同一个事务多次读取同
 ### 备份中如果要保持数据一致性
 - 使用InnoDB，能够保证一个事务内数据一致备份到另处。但是如果应用逻辑写的不对，导致本应该是一个事务到了两个事务，备份在两个事务之中可能数据不一致。
 - mysqldump --single-transaction 在InnoBD开始dump开启事务，隔离等级必须是repeatable read. 但是dump时不能执行ALTER TABLE, CREATE TABLE, DROP TABLE, RENAME TABLE, TRUNCATE TABLE。**To dump large tables, combine the --single-transaction option with the --quick option.**
+### 使用LVM镜像做mysql备份的基本思路
+- 获取读锁
+- 将缓存中的数据写到磁盘
+- 建立快照
+- 释放读锁
 
 ### LVM CoW原理
 - 给一个卷打一个快照，只记录元信息，当源卷发生写，把需要改变的那部分数据在未改变前复制到快照。这样，读取快照时，既能保证拍照时的数据一致，又能省时间性能。
