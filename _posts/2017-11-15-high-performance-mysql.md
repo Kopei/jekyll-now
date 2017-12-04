@@ -75,8 +75,10 @@ repeatable read是mysql默认隔离等级，保证同一个事务多次读取同
   1. 原始文件比逻辑备份大
   2. 可能不总是夸平台
 - 使用check tables或mysqlcheck 检查恢复操作。
+
 ### 推荐的备份方案
 - 先一周使用一次使用物理备份，启动mysql实例，运行mysqlcheck, 然后在服务器负载低时周期性地mysqldump执行逻辑备份，30分钟备份一次bin-log,热备份完flush logs。
+
 ### 需要备份什么？
 - 二进制文件, InnoDB事务日志
 - 代码，如存储过程
@@ -84,9 +86,11 @@ repeatable read是mysql默认隔离等级，保证同一个事务多次读取同
 - 服务器配置
 - 操作系统配置
 ### 增量备份存在中间增量出错，导致整个备份不可用的风险
+
 ### 备份中如果要保持数据一致性
 - 使用InnoDB，能够保证一个事务内数据一致备份到另处。但是如果应用逻辑写的不对，导致本应该是一个事务到了两个事务，备份在两个事务之中可能数据不一致。
 - mysqldump --single-transaction 在InnoBD开始dump开启事务，隔离等级必须是repeatable read. 但是dump时不能执行ALTER TABLE, CREATE TABLE, DROP TABLE, RENAME TABLE, TRUNCATE TABLE。**To dump large tables, combine the --single-transaction option with the --quick option.**
+
 ### 使用LVM镜像做mysql备份的基本思路
 - 获取读锁
 - 将缓存中的数据写到磁盘
@@ -96,5 +100,5 @@ repeatable read是mysql默认隔离等级，保证同一个事务多次读取同
 ### LVM CoW原理
 - 给一个卷打一个快照，只记录元信息，当源卷发生写，把需要改变的那部分数据在未改变前复制到快照。这样，读取快照时，既能保证拍照时的数据一致，又能省时间性能。
 - LVM快照的一些限制：
-  - 所有文件必须在同一个逻辑卷（分区）
-  - 需要有足够空间
+  - 所有文件必须在同一个逻辑卷（分区）
+  - 需要有足够空间
