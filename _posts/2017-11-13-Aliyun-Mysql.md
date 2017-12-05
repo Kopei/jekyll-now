@@ -27,12 +27,21 @@ title: Aliyun RDS for Mysql
 - ![rds HA]()
 - 多可用区可以承受机房级别的故障，多可用采用半同步复制方案，响应时间可能比单可用长。
 - 高可用策略：
-  - rds有两个高可用策略，RTO(recovery time objective）和RPO(recovery point objective)
-  - 三种复制方式：
-  1. 异步复制
-  2. 强同步
-  3. 半同步
-  
+  - rds有两个高可用策略，RTO(recovery time objective）和RPO(recovery point objective)
+  - 三种复制方式：
+  1. 异步复制, 主库提交，响应应用，再向slave异步复制。
+  2. 强同步， 主备复制完成后返回响应。
+  3. 半同步， 正常主备强同步，当主向备复制发生问题时，主退化为异步复制。
+
+### 备份服务
+- 通过Backup, Recovery, Storage模块提供数据的离线备份，转储和恢复
+- 通过Backup备节点压缩数据到oss
+- 通过Recovery可以恢复备份文件到目标节点：
+  - 回滚主节点
+  - 修复备节点
+  - 创建只读实例
+- 通过Storage 复制备份文件的上传、转储，下载。
+
 ### 从本地迁移数据到云上
 - 云上的数据库账号需要和本地一致
 - 支持DTC, FTP, mysqldump
