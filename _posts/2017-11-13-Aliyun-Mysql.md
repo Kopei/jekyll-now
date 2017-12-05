@@ -19,6 +19,20 @@ title: Aliyun RDS for Mysql
 - 只能通过api和控制台进行重启。
 - 普通账户不可以自定义授权，5.7不支持创建普通账户权限。
 
+### 高可用服务
+- 阿里云的rds高可用采用Detection, Repair, Notice等模块组成， 主要保障数据链路服务的可用性。
+- Detection: 通过HA判断主备节点是否正常，能够排除网络抖动，30秒完成异常切换操作。
+- Repair: 维护主备节点的复制关系和修复。
+- Notice: 负责通知HA主备节点的状态变化。
+- ![rds HA]()
+- 多可用区可以承受机房级别的故障，多可用采用半同步复制方案，响应时间可能比单可用长。
+- 高可用策略：
+  - rds有两个高可用策略，RTO(recovery time objective）和RPO(recovery point objective)
+  - 三种复制方式：
+  1. 异步复制
+  2. 强同步
+  3. 半同步
+  
 ### 从本地迁移数据到云上
 - 云上的数据库账号需要和本地一致
 - 支持DTC, FTP, mysqldump
