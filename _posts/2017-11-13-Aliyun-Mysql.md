@@ -3,6 +3,8 @@ layout: post
 title: Aliyun RDS for Mysql
 ---
 ## RDS文档小结
+默认部署主备架构且提供了容灾、备份、恢复、监控、迁移等方面的全套解决方案
+
 ### 账号模式
 - rds账户分为经典模式和高权限模式，5.7只有高权限模式。
 - 它们之间的区别是能不能直接通过sql创建账户，见下图。
@@ -24,7 +26,7 @@ title: Aliyun RDS for Mysql
 - Detection: 通过HA判断主备节点是否正常，能够排除网络抖动，30秒完成异常切换操作。
 - Repair: 维护主备节点的复制关系和修复。
 - Notice: 负责通知HA主备节点的状态变化。
-- ![rds HA](http://p0iombi30.bkt.clouddn.com/rda%20ha.png)
+ ![rds HA](http://p0iombi30.bkt.clouddn.com/rda%20ha.png)
 - 多可用区可以承受机房级别的故障，多可用采用半同步复制方案，响应时间可能比单可用长。
 - 高可用策略：
   - rds有两个高可用策略，RTO(recovery time objective）和RPO(recovery point objective)
@@ -104,18 +106,25 @@ sysbench --num-threads=32 --max-time=3600 --max-requests=999999999 --test= oltp.
 - 实时性能监控
 - 会话诊断和终止
 - 分析慢sql
+- CloudDBA仅适用于公共云华北1、华北2、华东1、华东2、华南1地域的MySQL 5.5和MySQL 5.6版本的实例
 
 ### mysql5.6的读写分离
 - 读写分离和主实例、读实例的区别，后者单独有连接地址，业务逻辑选择进行连接。读写分离是一个统一的地址，程序自动进行读写分流。
 - 用户只需要购买读实例，可以免费试用读写分离
+  
+  <img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51073/cn_zh/1505467133787/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E5%9C%B0%E5%9D%80.png" alt="Drawing" width="400"/>
 
 ### 数据备份和恢复
 - 数据备份oss+日志oss总量>实例空间50%时，将收费。
 - **误删数据该如何恢复？** 使用克隆实例按 _按备份集_ 或 _按时间点_ 两种方式复制出一个新的实例，进入克隆实例导出sql,再进入主实例导入sql。若数据较多可以使用DTS.
+- 不建议使用覆盖性恢复
 
 ### 虚机自建mysql和RDS性能对比
 - 云数据库是可能比自建数据库慢的。见[对比ECS自建数据库与RDS性能时的注意事项](https://help.aliyun.com/document_detail/55823.html)
 
+### 数据加密
+- SSL
+- TDE 指定参与加密的数据库或者表。这些数据库或者表中的数据在写入到任何设备（磁盘、SSD、PCIE 卡）或者服务（OSS、OAS）前都会进行加密.
 ### 其它技术运维问题
 - [其他问题](https://help.aliyun.com/knowledge_list_page/41698/1.html)
 
