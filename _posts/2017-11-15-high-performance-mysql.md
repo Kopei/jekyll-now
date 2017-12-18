@@ -105,3 +105,20 @@ repeatable read是mysql默认隔离等级，保证同一个事务多次读取同
 - LVM快照的一些限制：
   - 所有文件必须在同一个逻辑卷（分区）
   - 需要有足够空间
+
+### Mysql的索引
+- 索引在mysql也叫key， mysql有单列索引和多列索引。多列索引根据左序排列。
+- 索引的类型：
+  - B-Tree索引， MyISAM使用压缩的索引指向数据的物理位置；innodb使用索引指向数据的主键。
+- 一个典型的B+树索引
+<img src="../images/B+tree.png" width="250" height="250">
+- 对于下面这个多列索引：
+```sql
+    create table people (
+    last_name VARCHAR(50), not NULL,
+    first_name VARCHAR (50), not NULL ,
+    dob DATE , not NULL ,
+    gender enum('m', 'f') not NULL ,
+    key(last_name, first_name, dob)
+    );
+```
