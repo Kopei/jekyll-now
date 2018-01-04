@@ -3,6 +3,7 @@ layout: post
 title: Kubernetes Pod含义
 ---
 > 官网文档 [https://kubernetes.io/docs/concepts/workloads/pods/pod/](https://kubernetes.io/docs/concepts/workloads/pods/pod/)
+
 ### 什么是Pod？
 Pod的本身含义是**一群鲸鱼**的意思, 而Docker的Logo刚好是🐳。所以简单说pod就是一组容器。（不一定是docker container) pod里的容器共享存储，网络和运行的容器环境。共享的环境包括cgroup, 命名空间, Ip, 端口和其他隔离方面的东西
 
