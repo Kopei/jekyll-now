@@ -50,8 +50,14 @@ oc expose service cotd
     oc new-project welcome --display-name='Welcom' --description='Welcome'
     oc new-app devopswithopenshift/welcome:latest --name=myapp
     oc patch dc myapp -p '{"spec":{"strategy":{"type":"Recreate"}}}'
-    oc set probe dc myapp --readiness --open-tcp=8080 --initial-delay-seconds=5 --timeout-second=5
+    oc set probe dc myapp --readiness --open-tcp=8080 --initial-delay-seconds=5 --timeout-seconds=5
+    oc set probe dc myapp --liveness -- echo ok
+    oc expose svc myapp --name welcome
     ```
+  - Custom 订制
+  - lifecycle hooks. Openshift会另外起一个容器用于运行pre, mid, post hook.
+    - 当前支持pod-based类型hook, execNewPod字段定义
+    - 
 - 支持事件触发部署
 - 自定义策略切换部署方式
 - 回滚
