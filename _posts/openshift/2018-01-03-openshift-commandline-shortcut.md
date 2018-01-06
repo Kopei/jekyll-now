@@ -7,7 +7,10 @@ title: Openshift Commandline Shortname
 `oc project myproject`
 
 #### 创建pod
-`oc create -f Filename.json(yml)`
+```bash
+    oc create -f Filename.json(yml)
+    oc process -f file.json|oc create -f -  ##处理模板生产构建配置，然后创建pod
+```
 
 #### 创建app
 ```bash
