@@ -19,6 +19,8 @@ title: Openshift Commandline Shortname
 oc new-app (IMAGE | IMAGESTREAM | TEMPLATE | PATH | URL ...) [options]
 oc new-app --name=dbinit --strategy=docker https://github.com/devops-with-openshift/liquibase-example.git  ##将会从这个仓库拉代码，build on Dockerfile
 ```
+### 取消一个正在构建的app
+`oc cancel-build buildname`
 
 ### 修改一个资源的配置
 ```bash
