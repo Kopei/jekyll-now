@@ -12,10 +12,9 @@ wget -c https://github.com//openshift/origin/releases/download/v3.7.0/openshift-
 tar -xvf openshift-origin-client-tools-v3.7.0-7ed6862-mac.zip
 mv openshift-origin-client-tools-v3.7.0-7ed6862-mac/oc /usr/local/bin
 ```
-- 启动Openshift, 使用预置配置
+- 启动Openshift, 使用预置配置, 挂出数据
 ```bash
-oc cluster up --use-exist-config
-oc expose service cotd
+oc cluster up --host-data-dir='$REPLACE/oc/profiles/Devops/data' --host-config-dir='$REPLACE/oc/profiles/Devops/config' --use-existing-config
 ```
 - 访问`https://127.0.0.1:8443/login`
 
