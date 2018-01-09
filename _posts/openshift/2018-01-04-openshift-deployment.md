@@ -71,5 +71,5 @@ Openshift基于用户定义的模板，通过手动或者事件触发的方式�
 - 比如： session调整。是服务器session还是无状态，客户端缓存。
 
 ### 部署的资源利用
-默认情况下，pod可以无限使用节点资源。当然也可以通过项目级别或者通过部署策略指定使用资源的限制。Openshift强制使用Cgroup控制CPU和内存使用。
+默认情况下，pod可以无限使用节点资源。当然也可以通过项目级别或者通过部署策略限制资源的使用。Openshift强制使用Cgroup控制CPU和内存使用。
 `oc patch -n welcome --type=strategic dc myapp -p '{"spec": {"template":{"spec":{"containers":[{"name":"myapp", "resources":{"limits":{"cpu":"100m","memory":"256Mi"}}}]}}}}'`
