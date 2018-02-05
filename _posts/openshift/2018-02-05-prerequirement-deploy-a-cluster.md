@@ -4,6 +4,7 @@ title: Openshift Origin cluster部署配置要求
 ---
 
 > https://github.com/openshift/openshift-ansible
+
 ### 杂言
 官方提供的github ansible部署代码还是有一些坑的，首先不能用master分支的代码，master分支是他们的开发分支。所以需要选择某个release， 以下选择release-3.8作为说明。先说说配置要求和操作系统、网络等环境等要求。
 ### 系统配置需求
