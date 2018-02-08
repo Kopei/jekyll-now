@@ -1,0 +1,6 @@
+---
+layout: post
+title: Ansible 回调插件
+---
+
+ansible callback plugins 能够让ansible对应某个事件做出新的行为。默认
