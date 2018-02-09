@@ -16,10 +16,10 @@ ansible 2.3.1.0
 ```
 
 ### 问题出现
-用ansible安装部署docker的发现有容器一直起不来。安装的docker daemon是按docker官网[https://docs.docker.com/engine/installation/linux/docker-ce/centos/#install-docker-ce](https://docs.docker.com/engine/installation/linux/docker-ce/centos/#install-docker-ce)安装的，然后log发现报错`Error response from daemon: OCI runtime create failed: unable to retrieve OCI runtime error`。
+用ansible安装部署docker时发现有容器一直起不来。安装的docker daemon是按docker官网[https://docs.docker.com/engine/installation/linux/docker-ce/centos/#install-docker-ce](https://docs.docker.com/engine/installation/linux/docker-ce/centos/#install-docker-ce)安装的，然后log发现报错`Error response from daemon: OCI runtime create failed: unable to retrieve OCI runtime error`。
 
 ### 排查
-搜索查看[issue](https://github.com/moby/moby/issues/35972),发现是安装的docker-ce版本太新!而系统centos太旧，Centos7.1选择docker-ce-17.06.1.ce这个版本可用，17.12还是太新！
+搜索查看[issue](https://github.com/moby/moby/issues/35972),发现是安装的docker-ce版本太新!而centos太旧，Centos7.1选择docker-ce-17.06.3.ce这个版本可用，17.12还是太新！
 ```bash
 docker info
 Server Version: 18.01.0-ce
@@ -45,7 +45,7 @@ ps 7280
   7280 ?        Ssl    0:03 /usr/libexec/colord
 
 kill -9 7280 
-yum install -y docker-ce-17.06.1.ce 
+yum install -y docker-ce-17.06.3.ce 
 systemctl start docker
 ```
 
