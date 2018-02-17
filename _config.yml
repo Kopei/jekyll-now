@@ -84,3 +84,5 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+ 
+date_format: '%B %d, %Y'
