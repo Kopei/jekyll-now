@@ -5,14 +5,19 @@ layout: default
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
-
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
       <div class="entry">
         {{ post.excerpt }}
       </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <div>
+        {{ post.date | date: site.date_format }}
+             &middot;
+             <a href="{{ site.url }}{{ post.url }}#disqus_thread"></a>
+        {% if post.update_date %}
+             &middot;
+             Updated {{ post.update_date | date: site.date_format }}
+        {% endif %}
+      </div>
     </article>
   {% endfor %}
 </div>
