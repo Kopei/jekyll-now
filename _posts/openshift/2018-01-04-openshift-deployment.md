@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Openshift Deployment
+update_date: 2018-02-21
 ---
 
-> For _version v3.7_; _OS Mac_
+> For _version v3.7_; _OS Mac_; not recommend for production
 
-### 安装Openshift AllinOne
+### 安装Openshift AllinOne. 
 - 安装oc cli. 地址：[https://github.com/openshift/origin/releases](https://github.com/openshift/origin/releases)
 ```bash
 wget -c https://github.com//openshift/origin/releases/download/v3.7.0/openshift-origin-client-tools-v3.7.0-7ed6862-mac.zip
@@ -17,6 +18,7 @@ mv openshift-origin-client-tools-v3.7.0-7ed6862-mac/oc /usr/local/bin
 oc cluster up --host-data-dir='$REPLACE/oc/profiles/Devops/data' --host-config-dir='$REPLACE/oc/profiles/Devops/config' --use-existing-config
 ```
 - 访问`https://127.0.0.1:8443/login`
+- 生产环境需要在linux下安装，并且需要考虑HA, openshift的安装脚本不支持single master升级到multiple master.
 
 ### Openshift的部署叫replication controller.
 Openshift基于用户定义的模板，通过手动或者事件触发的方式开始部署。
