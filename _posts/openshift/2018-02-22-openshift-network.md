@@ -8,8 +8,7 @@ update_date: 2018-02-28
 > https://docs.openshift.org/latest/architecture/networking/networking.html
 
 ### 前言
-openshift的网路架构是建立在kubernetes的service上的。K8S的[Service](https://kubernetes.io/docs/concepts/services-networking/service/)
-是一组pods和访问这些pods的逻辑抽象，service解耦了下游pods的网路变化。但是由于Service也会变化，所以openshift在master运行[skyDNS](https://github.com/skynetservices/skydns)来解决service网路的变化。
+openshift的网路架构是建立在kubernetes的service上的。K8S的[Service](https://kubernetes.io/docs/concepts/services-networking/service/)是一组pods和访问这些pods的逻辑抽象，service解耦了下游pods的网路变化。但是由于Service也会变化，所以openshift在master运行[skyDNS](https://github.com/skynetservices/skydns)来解决service网路的变化。
 
 ### SDN
 Software Define Networking软件定义集群网络使openshift的pods相互能够通信，SDN使用Open vSwitch(OVS)来管理配置网路。有三种SDN插件可以配置pods网路：
