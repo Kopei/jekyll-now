@@ -2,6 +2,7 @@
 layout: post
 title: Openshift的网路
 comment: true
+update_date: 2018-02-28
 ---
 
 > https://docs.openshift.org/latest/architecture/networking/networking.html
