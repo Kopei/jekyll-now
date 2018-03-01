@@ -101,7 +101,7 @@ docker-pool rhel twi-a-t---  9.29g             0.00   0.12
 ```
 
 ### 管理容器日志
-容器的日志（/var/lib/docker/containers/<hash>/<hash>-json.log）增加可能会有问题，可以通过配置docker json-file 日志驱动来限制大小和日志数量。修改/etc/sysconfig/docker, 然后重启。
+容器的日志（/var/lib/docker/containers/<hash>/<hash>-json.log）大小增大可能会有问题，可以通过配置docker json-file 日志驱动来限制大小和日志数量。修改/etc/sysconfig/docker, 然后重启。
 ```
 OPTIONS='--insecure-registry=172.30.0.0/16 --selinux-enabled --log-opt max-size=1M --log-opt max-file=3'
 ```
