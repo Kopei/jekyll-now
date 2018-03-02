@@ -7,7 +7,7 @@ update_date: 2018-03-01
 > https://github.com/openshift/openshift-ansible
 
 ### 杂言
-官方提供的github ansible部署代码还是有一些坑的，首先不能用master分支的代码，master分支是他们的开发分支。所以需要选择某个release， 以下选择release-3.8作为说明。先说说配置要求和操作系统、网络等环境等要求。
+官方提供的github ansible部署代码还是有一些坑的，首先不能用master分支的代码，master分支是他们的开发分支。所以需要选择某个release， 以下选择release-3.8作为说明。先说说配置要求和操作系统、网络等环境等要求, 这些要求覆盖所有节点。
 
 ### 系统配置需求
 - master，nodes, 外部etcd都有最小推荐配置. 大致上，master每1000pods需要额外1CPU和1.5GB内存。node的配置根据业务负载配置。
