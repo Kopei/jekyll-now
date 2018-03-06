@@ -4,11 +4,11 @@ title: Openshift中Kubernetes的基础设施
 ---
 
 ### 前言
-主要是从Openshift Origin的[Doc](https://docs.openshift.org/latest/architecture/infrastructure_components/kubernetes_infrastructure.html#master-components)看到的, 加上官网的Doc. k8s主要用于容器应用的部署，维护和扩展。
+主要是从Openshift Origin的[Doc](https://docs.openshift.org/latest/architecture/infrastructure_components/kubernetes_infrastructure.html#master-components)看到的, 加上官网的Doc. 
 
 ### Masters
 masters上的组件含有API server, controller manager server和etcd(可以单独host)。 master管理k8s集群中的nodes，调度节点上的pods.
-- API server. 可以当作一个独立的进程运行。API server验证和配置pods, services和replication controller; 分配pods到节点，根据service的配置同步pod的信息。
+- API server. 可以是一个独立的进程运行。API server验证和配置pods, services和replication controller; 分配pods到节点，根据service的配置同步pod的信息。
 - ETCD. 存储主机的状态， 其他组件查看etcd的动态，使自身做相应状态变化。ETCD使用RAFT算法，所以最后以2n+1来部署。
 - Controller Manager Server. 监控etcd的复制状态变化，然后调用API做到相应的复制改变。这个服务可以是单个进程，如果是多个进程那么就只有一个leader.
 - HAProxy. 如果master是HA, 默认采用HAProxy作为master api server负载均衡器. 当然也可以选择自定义的。
