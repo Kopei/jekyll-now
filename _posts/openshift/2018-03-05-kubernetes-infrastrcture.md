@@ -49,7 +49,7 @@ status:
 ```
 
 ### Nodes中的Kubelet
-其实是一个agent. kubelet用来通过manifest控制node的container健康运行， kubelet不会管理容器，这个工作是docker做到。 container manifest是一个描述pod的yaml文件。manifest可以通过4种方式提供给kubelet:
+其实是一个agent. kubelet用来通过manifest控制node的container健康运行， kubelet不会管理不是k8s创建的容器。 container manifest是一个描述pod的yaml文件。manifest可以通过4种方式提供给kubelet:
 - 命令行指定的文件地址
 - Http endpoint
 - 监控etcd服务
