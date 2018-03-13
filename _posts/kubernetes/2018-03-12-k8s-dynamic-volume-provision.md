@@ -92,13 +92,13 @@ spec:
             - name: PROVISIONER_NAME
               value: alicloud/nas
             - name: NFS_SERVER
-              value: 0cd8b4a576-mmi32.cn-hangzhou.nas.aliyuncs.com
+              value: 0cd8b4a576-mmi32.cn-hangzhou.nas.aliyuncs.com  # 指定创建的NAS挂载点
             - name: NFS_PATH
               value: /
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 0cd8b4a576-mmi32.cn-hangzhou.nas.aliyuncs.com
+            server: 0cd8b4a576-mmi32.cn-hangzhou.nas.aliyuncs.com   # 指定创建的NAS挂载点
             path: /
 ```
 
