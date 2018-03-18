@@ -44,7 +44,7 @@ oc import-image docker.io/busybox:latest --confirm ##把上游的镜像仓库镜
 oc get pods #展示pod资源的信息
 oc get rc redis  #展示replication controller
 oc get -o wide pods  #展示详情
-oc get -o template pod myapp --template={{.currentState.status}}
+oc get -o template pod myapp --template={{ .currentState.statusn }}
 ```
 
 #### 设置trigger配置
