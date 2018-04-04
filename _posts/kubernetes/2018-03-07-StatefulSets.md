@@ -84,7 +84,7 @@ StatefulSets有一个唯一的identity，由有序的（由0开始分配给pod�
 
 ## 更新StatefulSet
 1.7版本以后，StatefulSet控制器支持自动更新。更新策略取决于StatefulSet对象的`spec.updateStrategy`字段，这个功能可以用于更新容器镜像，
-资源用量，标签，pods的注释，1.9支持`RollingUpdate`和`OnDelete`两种更新策略。
+资源用量，标签，pods的注释(如果改了其它设置，就需要删除statefulsets重新create), 1.9支持`RollingUpdate`和`OnDelete`两种更新策略。
 - `RollingUpdate`将会把statefulset的pods按倒叙更新。首先让updateStrategy使用rollingupdate
 ```bash
 kubectl patch statefulset web -p '{"spec":{"updateStrategy":{"type":"RollingUpdate"}}}'
